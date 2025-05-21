@@ -10,14 +10,14 @@ function onScanSuccess(qrCodeMessage) {
     .then(response => response.json())
     .then(data => {
       if (data.message) {
-        document.getElementById('result').innerText = `✅ ${data.message} - ${data.participante.nome}`;
+        document.getElementById('result').innerText = `${data.message} - ${data.participante.nome}`;
       } else if (data.error) {
-        document.getElementById('result').innerText = `⚠️ ${data.error}`;
+        document.getElementById('result').innerText = `${data.error}`;
       }
     })
     .catch(error => {
       console.error('Erro ao confirmar presença:', error);
-      document.getElementById('result').innerText = `❌ Erro ao enviar dados.`;
+      document.getElementById('result').innerText = `Erro ao enviar dados.`;
     });
 }
 
