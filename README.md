@@ -1,1 +1,1 @@
-teste
+O projeto é baseado em cadastrar participantes para um evento, gerar o QRcode desse participante para ser usado como um convite individual de presença. Na entrada do evento esse QRcode é lido pelo leitor de QRcode e o nome é colocado em uma lista de confirmação de presença. Lista essa que pode ser acessada por um botão na mesma tela de leitura de Qrcode.
