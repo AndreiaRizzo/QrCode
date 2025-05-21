@@ -17,7 +17,6 @@
     "express": "^5.1.0",
     "html5-qrcode": "^2.3.8",
     "mongoose": "^8.14.1",
-    "qrcode": "^1.5.4",
-    "qrcode-image": "^0.1.0"
+    "qrcode": "^1.5.4"
   }
 }

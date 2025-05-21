@@ -47,9 +47,14 @@ router.post('/confirmar/:id', async (req, res) => {
     res.status(500).json({ error: 'Erro ao confirmar presença' });
   }
 });
-const QRCodeImage = require('qrcode-image');
 
-// Gerar QR Code como imagem PNG para download
+
+
+
+
+
+// Já foi declarado no topo: const QRCode = require('qrcode');
+
 router.get('/:id/qrcode', async (req, res) => {
   try {
     const { id } = req.params;
@@ -57,14 +62,17 @@ router.get('/:id/qrcode', async (req, res) => {
 
     if (!participant) return res.status(404).json({ error: 'Participante não encontrado' });
 
-    const qr = QRCodeImage(id, { type: 'png' });
-    res.setHeader('Content-type', 'image/png');
-    qr.pipe(res);
+    // Gera o QR code como buffer PNG
+    const buffer = await QRCode.toBuffer(id);
+
+    res.setHeader('Content-Type', 'image/png');
+    res.send(buffer);
 
   } catch (err) {
     res.status(500).json({ error: 'Erro ao gerar QR Code' });
   }
 });
+
 
 
 module.exports = router;
