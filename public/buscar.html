@@ -8,22 +8,18 @@
 <body class="bg-light">
   <div class="container py-5">
     <h2 class="mb-4 text-center">Buscar Participante</h2>
-    <form id="buscarForm" class="mx-auto" style="max-width: 500px;">
-      <div class="mb-3">
-        <label for="buscaNome" class="form-label">Nome</label>
-        <input type="text" class="form-control" id="buscaNome">
-      </div>
+    <form id="buscarForm" class="mx-auto" style="max-width: 400px;">
       <div class="mb-3">
         <label for="buscaCpf" class="form-label">CPF</label>
-        <input type="text" class="form-control" id="buscaCpf">
-      </div>
-      <div class="mb-3">
-        <label for="buscaEmail" class="form-label">E-mail</label>
-        <input type="email" class="form-control" id="buscaEmail">
+        <input type="text" class="form-control" id="buscaCpf" required>
       </div>
       <button type="submit" class="btn btn-info">Buscar</button>
       <a href="index.html" class="btn btn-secondary ms-2">Voltar</a>
     </form>
+
+    <ul id="resultados" class="list-group mt-4"></ul>
   </div>
+
+  <script src="buscar.js"></script>
 </body>
 </html>

@@ -32,3 +32,38 @@ html5QrCode.start(
 ).catch(err => {
   console.error("Erro ao iniciar leitura:", err);
 });
+
+// Função chamada no submit de busca
+function buscarParticipantes() {
+  const nome = document.getElementById('filtroNome').value;
+  const cpf = document.getElementById('filtroCpf').value;
+  const email = document.getElementById('filtroEmail').value;
+
+  const params = new URLSearchParams();
+  if (nome) params.append('nome', nome);
+  if (cpf) params.append('cpf', cpf);
+  if (email) params.append('email', email);
+
+  fetch(`${apiBase}/buscar?` + params.toString())
+    .then(res => res.json())
+    .then(participantes => {
+      const resultadoDiv = document.getElementById('resultadoBusca');
+      resultadoDiv.innerHTML = '';
+      if (participantes.length === 0) {
+        resultadoDiv.innerText = 'Nenhum participante encontrado.';
+      } else {
+        const lista = document.createElement('ul');
+        participantes.forEach(p => {
+          const item = document.createElement('li');
+          item.textContent = `${p.nome} - ${p.cpf} - ${p.email}`;
+          lista.appendChild(item);
+        });
+        resultadoDiv.appendChild(lista);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Erro ao buscar participantes.');
+    });
+}
+

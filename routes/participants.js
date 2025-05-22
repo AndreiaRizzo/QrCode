@@ -73,6 +73,61 @@ router.get('/:id/qrcode', async (req, res) => {
   }
 });
 
+// POST: Cadastrar participante
+router.post('/cadastrar', (req, res) => {
+  const { nome, cpf, email, telefone } = req.body;
+
+  if (!nome || !cpf || !email || !telefone) {
+    return res.status(400).json({ erro: 'Todos os campos são obrigatórios.' });
+  }
+
+  // Verifica se o CPF já está cadastrado
+  const existente = participants.find(p => p.cpf === cpf);
+  if (existente) {
+    return res.status(400).json({ erro: 'Participante com este CPF já cadastrado.' });
+  }
+
+  participants.push({ nome, cpf, email, telefone });
+  res.status(201).json({ mensagem: 'Participante cadastrado com sucesso!' });
+});
+
+// GET: Buscar participante pelo CPF
+router.get('/buscar', async (req, res) => {
+  const { cpf } = req.query;
+
+  try {
+    if (!cpf) {
+      return res.status(400).json({ error: 'CPF é obrigatório para busca.' });
+    }
+
+    const participante = await Participant.findOne({ cpf });
+
+    if (!participante) {
+      return res.status(404).json({ error: 'Participante não encontrado.' });
+    }
+
+    res.json(participante);
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao buscar participante.' });
+  }
+});
+
+
+
+  
+
+// GET: Listar todos os participantes
+router.get('/listar', (req, res) => {
+  res.json(participants);
+});
+
+module.exports = router;
+
+// No seu app.js (servidor):
+// const participantsRouter = require('./routes/participants');
+// app.use('/api/participants', participantsRouter);
+
+
 
 
 module.exports = router;
