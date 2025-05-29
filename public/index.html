@@ -8,11 +8,35 @@
   <style>
     body {
       background-color: #e6dbf1;
+      margin: 0;
+    }
+
+    .logo-wrapper-top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 40px;
+      margin-bottom: -50px;
+      z-index: 10;
+      position: relative;
+    }
+
+    .logo-img {
+      background-color: #ffffff;
+      padding: 10px 24px;
+      border-radius: 999px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      height: 70px;
+      object-fit: contain;
     }
 
     .card-style {
       border-radius: 1rem;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 5;
+      padding: 3rem 2rem;
+      width: 100%;
     }
 
     .btn-custom {
@@ -23,35 +47,50 @@
       min-height: 50px;
     }
 
-    .logo-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding-bottom: 1rem;
-      border-bottom: 2px solid #eee;
-      margin-bottom: 1.5rem;
+    @media (max-width: 576px) {
+      .card-style {
+        padding: 2rem 1rem !important;
+      }
+
+      .logo-img {
+        height: 60px;
+        padding: 8px 20px;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+      }
+
+      .btn-custom {
+        font-size: 0.95rem;
+        padding: 0.7rem 1rem;
+      }
     }
 
-    .logo-img {
-      height: 70px;
-      max-width: 100%;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    @media (min-width: 768px) {
+      .card-style {
+        max-width: 1024px;
+        padding: 3rem 2.5rem;
+      }
+
+      .logo-img {
+        height: 75px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container d-flex justify-content-center align-items-center min-vh-100">
-    <div class="card bg-white p-5 card-style text-center w-100" style="max-width: 420px;">
-      
-      <!-- LOGO -->
-      <div class="logo-wrapper">
-        <img src="imagens/logocheck.png" alt="CheckEasy Logo" class="logo-img">
-      </div>
 
-      <!-- TÍTULO -->
-      <h2 class="text-primary fw-bold mb-4">Painel Administrativo</h2>
+  <!-- LOGO FLUTUANTE -->
+  <div class="logo-wrapper-top">
+    <img src="imagens/logocheck.png" alt="CheckEasy Logo" class="logo-img">
+  </div>
 
-      <!-- BOTÕES -->
+  <!-- CONTAINER DO CARD -->
+  <div class="container-fluid d-flex justify-content-center align-items-start min-vh-100 pt-0">
+    <div class="bg-white card-style text-center">
+      <h2 class="text-primary fw-bold mb-4 mt-2">Painel Administrativo</h2>
+
       <div class="d-grid gap-3">
         <a class="btn btn-primary btn-custom" href="leitor.html">Leitor de QR Code</a>
         <a class="btn btn-success btn-custom" href="cadastro.html">Cadastrar Participante</a>
