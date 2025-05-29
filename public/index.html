@@ -2,16 +2,61 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Sistema de Presença por QR Code</title>
+  <title>CheckEasy - Administração</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #e6dbf1;
+    }
+
+    .card-style {
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-custom {
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.9rem 1.5rem;
+      min-height: 50px;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #eee;
+      margin-bottom: 1.5rem;
+    }
+
+    .logo-img {
+      height: 70px;
+      max-width: 100%;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    }
+  </style>
 </head>
-<body class="bg-light">
-  <div class="container py-5 text-center">
-    <h1 class="mb-4">Sistema de Presença por QR Code</h1>
-    <div class="d-grid gap-3 col-6 mx-auto">
-      <a class="btn btn-primary" href="leitor.html">📷 Leitor de QR Code</a>
-      <a class="btn btn-success" href="cadastro.html">📝 Cadastrar Participante</a>
-      <a class="btn btn-info" href="buscar.html">🔍 Buscar Participante</a>
+<body>
+  <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card bg-white p-5 card-style text-center w-100" style="max-width: 420px;">
+      
+      <!-- LOGO -->
+      <div class="logo-wrapper">
+        <img src="imagens/logocheck.png" alt="CheckEasy Logo" class="logo-img">
+      </div>
+
+      <!-- TÍTULO -->
+      <h2 class="text-primary fw-bold mb-4">Painel Administrativo</h2>
+
+      <!-- BOTÕES -->
+      <div class="d-grid gap-3">
+        <a class="btn btn-primary btn-custom" href="leitor.html">Leitor de QR Code</a>
+        <a class="btn btn-success btn-custom" href="cadastro.html">Cadastrar Participante</a>
+        <a class="btn btn-info btn-custom" href="buscar.html">Buscar Participante</a>
+      </div>
     </div>
   </div>
 </body>
