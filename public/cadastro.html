@@ -3,31 +3,122 @@
 <head>
   <meta charset="UTF-8" />
   <title>Cadastrar Participante</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #e6dbf1;
+      margin: 0;
+    }
+
+    .logo-wrapper-top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 40px;
+      margin-bottom: -30px;
+      z-index: 10;
+      position: relative;
+    }
+
+    .logo-img {
+      background-color: #ffffff;
+      padding: 6px 24px;
+      border-radius: 999px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      max-height: 60px;
+      object-fit: contain;
+    }
+
+    .card-style {
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 5;
+    }
+
+    .btn-custom {
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.9rem 1.5rem;
+      min-height: 50px;
+    }
+
+    .valid-label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      white-space: nowrap;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .valid-label.success {
+      color: #28a745;
+    }
+
+    .valid-label.error {
+      color: #dc3545;
+    }
+
+    input.form-control {
+      border: 1px solid #ccc;
+      transition: border-color 0.2s;
+    }
+
+    input.form-control:focus {
+      border-color: #007bff;
+      box-shadow: none;
+    }
+  </style>
 </head>
-<body class="bg-light">
-  <div class="container py-5">
-    <h2 class="mb-4 text-center">Cadastro de Participante</h2>
-    <form id="cadastroForm" class="mx-auto" style="max-width: 500px;">
-      <div class="mb-3">
-        <label for="nome" class="form-label">Nome</label>
-        <input type="text" class="form-control" id="nome" required>
-      </div>
-      <div class="mb-3">
-        <label for="cpf" class="form-label">CPF</label>
-        <input type="text" class="form-control" id="cpf" required>
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">E-mail</label>
-        <input type="email" class="form-control" id="email" required>
-      </div>
-      <div class="mb-3">
-        <label for="telefone" class="form-label">Telefone</label>
-        <input type="text" class="form-control" id="telefone" required>
-      </div>
-      <button type="submit" class="btn btn-success">Cadastrar</button>
-      <a href="index.html" class="btn btn-secondary ms-2">Voltar</a>
-    </form>
+<body>
+
+  <!-- LOGO FLUTUANTE -->
+  <div class="logo-wrapper-top">
+    <img src="imagens/logocheck.png" alt="CheckEasy Logo" class="logo-img">
   </div>
+
+  <!-- CONTAINER DO FORMULÁRIO -->
+  <div class="container d-flex justify-content-center align-items-start min-vh-100 pt-0">
+    <div class="bg-white p-4 p-md-5 card-style w-100" style="max-width: 420px; margin-top: 0;">
+      <h3 class="text-primary fw-bold text-center mb-4">Cadastrar</h3>
+
+      <form id="cadastroForm" autocomplete="off">
+        <div class="mb-3">
+          <label for="nome" class="form-label fw-bold">Nome completo</label>
+          <input type="text" class="form-control" id="nome" name="nome" required autocomplete="off">
+        </div>
+
+        <div class="mb-3 position-relative">
+          <label for="cpf" class="form-label fw-bold">CPF</label>
+          <input type="text" class="form-control" id="cpf" name="cpf" required autocomplete="off">
+          <div id="cpfValido" class="valid-label position-absolute top-50 end-0 translate-middle-y me-3 d-none"></div>
+        </div>
+
+        <div class="mb-3 position-relative">
+          <label for="telefone" class="form-label fw-bold">Telefone com DDD</label>
+          <input type="text" class="form-control" id="telefone" name="telefone" required autocomplete="off">
+          <div id="telValido" class="valid-label position-absolute top-50 end-0 translate-middle-y me-3 d-none"></div>
+        </div>
+
+        <div class="mb-4 position-relative">
+          <label for="email" class="form-label fw-bold">Email</label>
+          <input type="email" class="form-control" id="email" name="email" required autocomplete="off">
+          <div id="emailValido" class="valid-label position-absolute top-50 end-0 translate-middle-y me-3 d-none"></div>
+        </div>
+
+        <div class="d-grid gap-3 mt-3">
+          <button type="submit" class="btn btn-primary btn-custom">Cadastrar</button>
+          <a href="index.html" class="btn btn-secondary btn-custom" style="background-color: #c9b8d3; border: none;">Voltar</a>
+        </div>
+
+        <div class="mt-4 text-center" id="mensagem"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="cadastro.js"></script>
 </body>
 </html>
