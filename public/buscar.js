@@ -1,7 +1,12 @@
-document.getElementById('buscarForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
+const form = document.getElementById('buscarForm')
 
-  const cpf = document.getElementById('buscaCpf').value.trim();
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+    const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
+
+  const cpf = data.cpf;
 
   try {
     const res = await fetch(`http://localhost:3000/api/participants/buscar?cpf=${encodeURIComponent(cpf)}`);
