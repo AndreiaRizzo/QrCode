@@ -1,3 +1,18 @@
+// Aplica máscara no campo de CPF
+const cpfInput = document.getElementById('buscaCpf');
+
+cpfInput.addEventListener('input', () => {
+  let value = cpfInput.value.replace(/\D/g, ''); // Remove tudo que não for número
+  if (value.length > 11) value = value.slice(0, 11); // Limita a 11 dígitos
+
+  // Aplica a máscara: 123.456.789-00
+  value = value.replace(/(\d{3})(\d)/, '$1.$2');
+  value = value.replace(/(\d{3})(\d)/, '$1.$2');
+  value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+
+  cpfInput.value = value;
+});
+
 const form = document.getElementById('buscarForm');
 
 form.addEventListener('submit', async (e) => {
@@ -25,8 +40,8 @@ form.addEventListener('submit', async (e) => {
       item.classList.add('list-group-item');
 
       const statusHTML = participante.presenca
-        ? '<span class="badge bg-success">Presença confirmada ✅</span>'
-        : '<span class="badge bg-secondary">Presença pendente ⏳</span>';
+        ? '<span class="badge bg-success">Presença confirmada </span>'
+        : '<span class="badge bg-secondary">Presença pendente </span>';
 
       item.innerHTML = `${participante.nome} - ${participante.email} - CPF: ${participante.cpf} - ${statusHTML}`;
       lista.appendChild(item);
