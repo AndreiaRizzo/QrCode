@@ -46,6 +46,20 @@
       padding: 0.9rem 1.5rem;
       min-height: 50px;
     }
+    .btn-custom-green {
+      background-color: #20c997;
+      color: #fff;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+    .btn-custom-green:hover,
+    .btn-custom-green:focus {
+      background-color: #1aa67e; /* tom mais escuro para hover/focus */
+      color: #fff;
+      text-decoration: none;
+      box-shadow: none;
+    }
+
 
     @media (max-width: 576px) {
       .card-style {
@@ -93,9 +107,9 @@
 
       <div class="d-grid gap-3">
         <a class="btn btn-primary btn-custom" href="leitor.html">Leitor de QR Code</a>
-        <a class="btn btn-success btn-custom" href="cadastro.html">Cadastrar Participante</a>
+        <a class="btn btn-custom-green btn-custom" href="cadastro.html">Cadastrar Participante</a>
         <a class="btn btn-info btn-custom" href="buscar.html">Buscar Participante</a>
-        <a class="btn btn-secondary btn-custom" href="lista.html">Lista de participantes</a>
+        <a class="btn btn-secondary btn-custom" href="lista.html">Lista de Participantes</a>
       </div>
     </div>
   </div>
