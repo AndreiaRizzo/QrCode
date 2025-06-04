@@ -1,32 +1,37 @@
-const form = document.getElementById('buscarForm')
+const form = document.getElementById('buscarForm');
+
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
-    const formData = new FormData(form);
+
+  const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
 
   const cpf = data.cpf;
 
   try {
     const res = await fetch(`http://localhost:3000/api/participants/buscar?cpf=${encodeURIComponent(cpf)}`);
-    const participantes = await res.json();
+    const participante = await res.json();
 
     const lista = document.getElementById('resultados');
     lista.innerHTML = '';
 
-    if (!participantes.length) {
+    // Verifica se houve erro na resposta
+    if (!res.ok || participante.error || !participante) {
       const item = document.createElement('li');
       item.classList.add('list-group-item');
       item.textContent = 'Nenhum participante encontrado.';
       lista.appendChild(item);
     } else {
-      participantes.forEach(p => {
-        const item = document.createElement('li');
-        item.classList.add('list-group-item');
-        item.textContent = `${p.nome} - ${p.email} - CPF: ${p.cpf}`;
-        lista.appendChild(item);
-      });
+      const item = document.createElement('li');
+      item.classList.add('list-group-item');
+      item.textContent = `${participante.nome} - ${participante.email} - CPF: ${participante.cpf}`;
+      lista.appendChild(item);
     }
   } catch (err) {
     console.error('Erro na busca:', err);
+    const lista = document.getElementById('resultados');
+    lista.innerHTML = `
+      <li class="list-group-item text-danger">Erro na requisição. Verifique o console.</li>
+    `;
   }
 });
