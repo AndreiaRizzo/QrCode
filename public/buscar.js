@@ -1,6 +1,4 @@
 const form = document.getElementById('buscarForm')
-
-
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
     const formData = new FormData(form);
