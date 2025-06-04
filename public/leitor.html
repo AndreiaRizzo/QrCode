@@ -3,14 +3,130 @@
 <head>
   <meta charset="UTF-8" />
   <title>Leitor de QR Code</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #e6dbf1;
+      margin: 0;
+    }
+
+    .logo-wrapper-top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 40px;
+      margin-bottom: -40px;
+      z-index: 10;
+      position: relative;
+    }
+
+    .logo-img {
+      background-color: #ffffff;
+      padding: 10px 24px;
+      border-radius: 999px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      height: 70px;
+      object-fit: contain;
+    }
+
+    .card-style {
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 5;
+      padding: 3rem 2rem;
+      width: 100%;
+      max-width: 400px; /* padrão mobile/tablet */
+      background-color: #fff;
+      transition: max-width 0.3s ease;
+    }
+
+    .btn-custom {
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.9rem 1.5rem;
+      min-height: 50px;
+      background-color: #7a5ca6;
+      color: white;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+    .btn-custom:hover,
+    .btn-custom:focus {
+      background-color: #5b457a;
+      color: white;
+      outline: none;
+      box-shadow: none;
+    }
+
+    h2 {
+      color: #0d6efd; /* cor azul do título */
+      font-weight: 700;
+    }
+
+    /* Responsivo para telas pequenas */
+    @media (max-width: 576px) {
+      .card-style {
+        padding: 2rem 1rem !important;
+        max-width: 100%;
+      }
+
+      .logo-img {
+        height: 60px;
+        padding: 8px 20px;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      .btn-custom {
+        font-size: 0.95rem;
+        padding: 0.7rem 1rem;
+      }
+    }
+
+    /* Largura maior para telas grandes */
+    @media (min-width: 992px) {
+      .card-style {
+        max-width: 600px; /* maior no desktop */
+        padding: 4rem 3rem;
+      }
+
+      .btn-custom {
+        font-size: 1.1rem;
+        padding: 1rem 2rem;
+      }
+
+      .logo-img {
+        height: 75px;
+      }
+    }
+
+    #result {
+      font-weight: 700;
+      color: #0d6efd;
+      min-height: 1.5em;
+    }
+  </style>
 </head>
-<body class="bg-light">
-  <div class="container py-5 text-center">
-    <h2 class="mb-4">Leitor de QR Code</h2>
-    <div id="reader" class="mx-auto" style="width:300px;"></div>
-    <p id="result" class="mt-3 fw-bold text-primary"></p>
-    <a href="index.html" class="btn btn-secondary mt-4">⬅ Voltar ao Início</a>
+<body>
+
+  <!-- LOGO FLUTUANTE -->
+  <div class="logo-wrapper-top">
+    <img src="imagens/logocheck.png" alt="CheckEasy Logo" class="logo-img">
+  </div>
+
+  <!-- CONTAINER DO LEITOR QR -->
+  <div class="container d-flex justify-content-center align-items-start min-vh-100 pt-0">
+    <div class="card-style text-center">
+      <h2 class="mb-4">Leitor de QR Code</h2>
+      <div id="reader" class="mx-auto" style="width:300px;"></div>
+      <p id="result" class="mt-3"></p>
+      <a href="index.html" class="btn btn-custom mt-4">Voltar ao Início</a> 
+    </div>
   </div>
 
   <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
