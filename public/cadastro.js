@@ -8,6 +8,7 @@ const cpfValido = document.getElementById('cpfValido');
 const telValido = document.getElementById('telValido');
 const emailValido = document.getElementById('emailValido');
 
+
 // Máscaras
 cpfInput.addEventListener('input', () => {
   let val = cpfInput.value.replace(/\D/g, '');
